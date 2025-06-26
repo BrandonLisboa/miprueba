@@ -1,0 +1,120 @@
+# miprueba
+
+import os
+os.system("cls")
+lista_usuarios =[]
+funcionar = True
+
+
+
+###noListo
+def ingresar_usuario():
+    try:
+        Nombre = input("Ingrese Nombre del usuario: ")
+        sexo= input("Seleccione sexo M o F : ")
+        contrasenna = input("Ingrese contraseña")
+    except ValueError:
+        print("Datos ingresados incorrectamente intente denuevo")
+        
+    usuario={
+        "Usuario": Nombre,
+        "Sexo" : sexo,
+        "Contraseña" : contrasenna    
+    }
+    lista_usuarios.append(usuario)
+    
+
+
+##listo
+def buscar_usuario():
+    try:
+        encontrar = input("Nombre de el usuario: ")
+    except ValueError:
+            print("Ingrese codigo Valido")
+    
+    encontrado = False
+    
+    for BUSCAR1 in lista_usuarios:
+        if BUSCAR1["Usuario"] == encontrar:
+            lista_usuarios.remove(BUSCAR1)
+            print("Usuario Existente!")
+            encontrado = True
+            break 
+    if encontrado == False:
+        print("Usuario no Existente!")            
+
+    
+
+###Listo
+def eliminar_usuario():
+    try:
+        Borrar1 = input("Nombre de el usuario: ")
+    except ValueError:
+            print("Ingrese formato valido")
+    
+    
+    encontrado = False
+    for BUSCAR1 in lista_usuarios:
+        if BUSCAR1["Usuario"] == Borrar1 :
+            lista_usuarios.remove(BUSCAR1)
+            print("Usuario borrado con exito!")
+            encontrado = True
+            break
+    if encontrado == False:
+        print("Borrado con exito!")
+        
+    
+    
+
+    
+    
+        
+    
+    
+        
+        
+
+    
+    
+    
+    
+
+
+
+
+
+while funcionar:
+    print("---------------")
+    print("1.- Ingresar usuario.")
+    print("2.- Buscar usuario.")
+    print("3.- Eliminar usuario.")
+    print("4.- Salir.")
+    
+    try:
+        opcion = int(input("Selecciona una opcion: "))
+    except ValueError:
+        print("Ingrese opcion valida")
+        continue
+        
+        
+    if opcion == 1:
+        os.system("cls")
+        ingresar_usuario()
+        
+    elif opcion == 2:
+        os.system("cls")
+        buscar_usuario()
+        
+    elif opcion == 3:
+        os.system("cls")
+        eliminar_usuario()
+        
+    elif opcion == 4:
+        print("Cerrando programa...")
+        funcionar = False
+    
+    else:
+        os.system("cls")
+        print("Ingrese opcion valida")
+        
+        
