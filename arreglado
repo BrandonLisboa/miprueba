@@ -1,4 +1,4 @@
-# miprueba
+# miprueba definitiva
 
 import os
 os.system("cls")
@@ -7,25 +7,58 @@ funcionar = True
 
 
 
-###noListo
+
+
+
+###Listardo
+def verificador_sexoo():
+    while True:
+        sexo = input("Seleccione sexo (M o F): ").strip().upper()
+        if sexo == "M" or sexo == "F":
+            return sexo
+        else:
+            print("Ingrese un sexo válido (M o F) ")
+                
+
+
+###idolo
+def verificador_kontra():
+    while True: 
+        contrasenna = input("Ingrese una contraseña: ")
+        if len(contrasenna) < 8:
+            print("La contraseña debe contener al menos 8 caracteres ")
+        elif not any(caracter.isdigit () for caracter in contrasenna):
+            print("La contraseña debe contener al menos un digito ")
+        elif not any(caracter.isalpha () for caracter in contrasenna):
+            print("La contraseña debe contener al menos un letra")
+        elif " " in contrasenna:
+            print("La contraseña no puede contener espacios en blanco")
+        else:
+            print("Contraseña Segura!")
+            return contrasenna
+            
+
+###ultra redi
 def ingresar_usuario():
     try:
         Nombre = input("Ingrese Nombre del usuario: ")
-        sexo= input("Seleccione sexo M o F : ")
-        contrasenna = input("Ingrese contraseña")
+        sexo= verificador_sexoo()
+        contrasenna = verificador_kontra()
+        
+        
     except ValueError:
         print("Datos ingresados incorrectamente intente denuevo")
         
     usuario={
         "Usuario": Nombre,
         "Sexo" : sexo,
-        "Contraseña" : contrasenna    
+        "Contraseña" : contrasenna   
     }
     lista_usuarios.append(usuario)
     
 
 
-##listo
+##arregladoimprime bien ynoborra)
 def buscar_usuario():
     try:
         encontrar = input("Nombre de el usuario: ")
@@ -36,12 +69,18 @@ def buscar_usuario():
     
     for BUSCAR1 in lista_usuarios:
         if BUSCAR1["Usuario"] == encontrar:
-            lista_usuarios.remove(BUSCAR1)
             print("Usuario Existente!")
             encontrado = True
+            print("Nombre: ", BUSCAR1["Usuario"])
+            print("Sexo: ", BUSCAR1["Sexo"])
+            print("Contraseña: ", BUSCAR1["Contraseña"])
+ 
+            
             break 
     if encontrado == False:
-        print("Usuario no Existente!")            
+        print("Usuario no Existente!")  
+        
+              
 
     
 
@@ -61,26 +100,8 @@ def eliminar_usuario():
             encontrado = True
             break
     if encontrado == False:
-        print("Borrado con exito!")
+        print("Usuario no encontrado!")
         
-    
-    
-
-    
-    
-        
-    
-    
-        
-        
-
-    
-    
-    
-    
-
-
-
 
 
 while funcionar:
@@ -93,6 +114,7 @@ while funcionar:
     try:
         opcion = int(input("Selecciona una opcion: "))
     except ValueError:
+        os.system("cls")
         print("Ingrese opcion valida")
         continue
         
@@ -116,5 +138,3 @@ while funcionar:
     else:
         os.system("cls")
         print("Ingrese opcion valida")
-        
-        
